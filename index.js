@@ -47,10 +47,6 @@ response:
 */
 
 function handleQueries(q, res) {
-  if(q.token !== process.env.SLACK_VERIFICATION_TOKEN) {
-    res.send('Sorry something went wrong');
-    return;
-  }
   if (q.text) {
     const amountOfSatoshi = parseFloat(q.text);
 
