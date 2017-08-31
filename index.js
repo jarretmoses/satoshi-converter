@@ -62,7 +62,7 @@ function handleQueries(q, res) {
 
       const json = {
         response_type: 'in_channel', // public to the channel
-        text: '$' + usd.toString(),
+        text: '$' + usd.toFixed(2).toString(),
       };
       res.json(json);
     });
