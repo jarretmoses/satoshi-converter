@@ -61,7 +61,7 @@ function handleQueries(q, res) {
       const usd = bitcoinPriceUsd * (amountOfSatoshi * satoshi);
 
       const json = {
-        response_type: 'in_channel', // public to the channle
+        response_type: 'in_channel', // public to the channel
         text: '$' + usd.toString(),
       };
       res.json(json);
