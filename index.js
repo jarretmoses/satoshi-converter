@@ -64,7 +64,7 @@ function handleQueries(q, res) {
       const bitcoinPriceUsd = data.result[0].Last;
       const usd = bitcoinPriceUsd * (amountOfSatoshi * satoshi);
 
-      let json = {
+      const json = {
         response_type: 'in_channel', // public to the channle
         text: '$' + usd.toString(),
       };
@@ -72,12 +72,12 @@ function handleQueries(q, res) {
     });
 
   } else {
-    let json = {
+    const json = {
       response_type: 'ephemeral', // private message
       text: 'How to use /satoshi command:',
       attachments:[
       {
-        text: 'Type a value after the command, e.g. `/satoshi 100`',
+        text: 'Type a value after the command, e.g. `/satoshi 1000`',
       }
     ]};
     res.json(json);
