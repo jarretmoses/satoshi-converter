@@ -36,11 +36,11 @@ app.post('/', (req, res) => {
 response:
 { token: '2P429UX-------',
   team_id: 'T1L---',
-  team_domain: 'girliemac',
+  team_domain: 'some-domain',
   channel_id: 'C1L---',
   channel_name: 'general',
   user_id: 'U1L----',
-  user_name: 'girlie_mac',
+  user_name: 'some user',
   command: '/httpstatus',
   text: '405',
   response_url: 'https://hooks.slack.com/commands/--- }
