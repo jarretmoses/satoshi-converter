@@ -56,7 +56,7 @@ function handleQueries(q, res) {
     }
 
     bittrex.getmarketsummary( { market : 'USDT-BTC'}, function( data, err ) {
-      const satoshi = 0.00000001;
+      const satoshi = 0.0000001;
       const bitcoinPriceUsd = data.result[0].Last;
       const usd = bitcoinPriceUsd * (amountOfSatoshi * satoshi);
 
