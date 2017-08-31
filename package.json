@@ -7,8 +7,8 @@
     "start": "node ./index.js",
     "dev": "nodemon ./index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Satoshi, Bitcoin, Us Dollar"],
+  "author": "Jarret Moses",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
