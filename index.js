@@ -52,9 +52,9 @@ function handleQueries(q, res) {
     return;
   }
   if (q.text) {
-    let amount = parseFloat(q.text);
+    const amountOfSatoshi = parseFloat(q.text);
 
-    if(isNaN(amount)) { // not a digit
+    if(isNaN(amountOfSatoshi)) { // not a digit
       res.send('Please eneter a valid amount');
       return;
     }
@@ -62,7 +62,7 @@ function handleQueries(q, res) {
     bittrex.getmarketsummary( { market : 'USDT-BTC'}, function( data, err ) {
       const satoshi = 0.00000001;
       const bitcoinPriceUsd = data.result[0].Last;
-      const usd = bitcoinPriceUsd * (amount * satoshi);
+      const usd = bitcoinPriceUsd * (amountOfSatoshi * satoshi);
 
       let json = {
         response_type: 'in_channel', // public to the channle
