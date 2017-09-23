@@ -46,36 +46,39 @@ response:
   response_url: 'https://hooks.slack.com/commands/--- }
 */
 
-function handleQueries(q, res) {
-  if (q.text) {
-    const amountOfSatoshi = parseFloat(q.text);
 
-    if(isNaN(amountOfSatoshi)) { // not a digit
-      res.send('Please eneter a valid amount');
+function handleQueries(q, res) {
+  const { body } = req;
+
+  if (body.text) {
+    const amountOfSatoshi = parseFloat(body.text);
+
+    if (isNaN(amountOfSatoshi)) {
+      res.send('Please enter a valid amount');
       return;
     }
 
-    bittrex.getmarketsummary( { market : 'USDT-BTC'}, function( data, err ) {
-      const satoshi = 0.0000001;
+    bittrex.getmarketsummary({ market: 'USDT-BTC' }, (data) => {
+      const satoshi = 0.00000001;
       const bitcoinPriceUsd = data.result[0].Last;
       const usd = bitcoinPriceUsd * (amountOfSatoshi * satoshi);
 
       const json = {
         response_type: 'in_channel', // public to the channel
-        text: '$' + usd.toFixed(2).toString(),
+        text: `$${usd.toFixed(4).toString()}`,
       };
       res.json(json);
     });
-
   } else {
     const json = {
       response_type: 'ephemeral', // private message
       text: 'How to use /satoshi command:',
-      attachments:[
-      {
-        text: 'Type a value after the command, e.g. `/satoshi 1000`',
-      }
-    ]};
+      attachments: [
+        {
+          text: 'Type a value after the command, e.g. `/satoshi 1000`',
+        },
+      ],
+    };
     res.json(json);
   }
 }
